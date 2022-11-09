@@ -1,0 +1,43 @@
+﻿<Window x:Class="HelixToolkitTutorial.MainWindow" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:HelixToolkit="clr-namespace:HelixToolkit.Wpf;assembly=HelixToolkit.Wpf" xmlns:local="clr-namespace:HelixToolkitTutorial" mc:Ignorable="d" Title="MainWindow" Height="450" Width="800">
+
+    <Grid Name="overall_grid">
+        <Grid.Background>
+            <RadialGradientBrush>
+                <GradientStop Color="Black" Offset="1" />
+                <GradientStop Color="#FF000B1E" Offset="0.779" />
+            </RadialGradientBrush>
+        </Grid.Background>
+
+        <!-- The HelixViewport3D supports camera manipulation, and can be used just like the Viewport3D -->
+        <HelixToolkit:HelixViewport3D ZoomExtentsWhenLoaded="True" Margin="0,62,0,62">
+
+            <!--Remember to add light to the scene-->
+            <HelixToolkit:SunLight />
+
+            <!--The content of this visual is defined in MainViewModel.cs-->
+            <ModelVisual3D Content="{Binding OurModel}" />
+
+            <!-- Draw a cube. -->
+            <ModelVisual3D>
+                <ModelVisual3D.Content>
+                    <GeometryModel3D>
+                        <GeometryModel3D.Geometry>
+                            <MeshGeometry3D x:Name="meshMain" Positions="0 0 0 1 0 0 0 1 0 1 1 0 0 0 1 1 0 1 0 1 1 1 1 1" TriangleIndices="2 3 1 2 1 0 7 1 3 7 5 1 6 5 7 6 4 5 6 2 0 6 0 4 2 7 3 2 6 7 0 1 5 0 5 4">
+                            </MeshGeometry3D>
+                        </GeometryModel3D.Geometry>
+                        <GeometryModel3D.Material>
+                            <DiffuseMaterial x:Name="matDiffuseMain">
+                                <DiffuseMaterial.Brush>
+                                    <SolidColorBrush Color="#e68d72" />
+                                </DiffuseMaterial.Brush>
+                            </DiffuseMaterial>
+                        </GeometryModel3D.Material>
+                    </GeometryModel3D>
+                </ModelVisual3D.Content>
+            </ModelVisual3D>
+
+        </HelixToolkit:HelixViewport3D>
+
+    </Grid>
+
+</Window>
